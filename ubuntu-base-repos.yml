@@ -1,0 +1,11 @@
+---
+  - hosts: all
+    become: True
+    roles: 
+      - ubuntu-base-repos
+    vars:
+      ubuntu_user: user_name
+      ubuntu_version: focal
+      ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
+      ubuntu_private_key_file: ~/.ssh/demo-ssh
+      ubuntu_port: 22

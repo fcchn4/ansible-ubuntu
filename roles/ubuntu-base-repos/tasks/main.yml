@@ -1,0 +1,192 @@
+- block:
+  - name: ADD SOURCES FILE
+    template:
+      src: sources.list
+      dest: /etc/apt/sources.list
+      owner: "root"
+      group: "root"
+      mode: "0644"
+
+  - name: CUSTOM BASHRC
+    template:
+      src: bashrc
+      dest: .bashrc
+      owner: "{{ ubuntu_user }}"
+      group: "{{ ubuntu_user }}"
+      mode: "0644"
+  
+  - name: MARIADB KEY
+    apt_key:
+      url: https://mariadb.org/mariadb_release_signing_key.asc
+      state: present
+  
+  - name: MARIADB
+    apt_repository:
+      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
+      filename: mariadb
+      state: present
+
+  - name: MARIADB SRC
+    apt_repository:
+      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
+      filename: mariadb
+      state: present
+
+  - name: VIRTUALBOX KEY
+    apt_key:
+      url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+      state: present
+
+  - name: VIRTUALBOX
+    apt_repository:
+      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ubuntu_version }} contrib
+      filename: virtualbox
+      state: present
+
+  - name: DOCKER GPG
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      keyring: /usr/share/keyrings/docker-archive-keyring.gpg
+      state: present
+
+  - name: DOCKER CE
+    apt_repository:
+      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ubuntu_version }} stable
+      filename: docker-ce
+      state: present
+
+  - name: TYPORA KEY
+    apt_key:
+      url: https://typora.io/linux/public-key.asc
+      state: present
+
+  - name: TYPORA
+    apt_repository:
+      repo: deb https://typora.io/linux ./
+      filename: typora
+      state: present
+
+  - name: VSCODE KEY
+    apt_key:
+      url: https://packages.microsoft.com/keys/microsoft.asc
+      state: present
+
+  - name: VSCODE
+    apt_repository:
+      repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
+      filename: vscode
+      state: present
+
+  - name: NODEJS KEY
+    apt_key:
+      url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      keyring: /usr/share/keyrings/nodesource.gpg
+      state: present
+
+  - name: NODEJS
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ ubuntu_version }} main
+      filename: nodesource
+      state: present
+
+  - name: NODEJS SRC
+    apt_repository:
+      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ ubuntu_version }} main
+      filename: nodesource
+      state: present
+
+  - name: YARN KEY
+    apt_key:
+      url: https://dl.yarnpkg.com/debian/pubkey.gpg
+      keyring: /usr/share/keyrings/yarnkey.gpg
+      state: present
+
+  - name: YARN
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main
+      filename: yarn
+      state: present
+
+  - name: TERRAFORM KEY
+    apt_key:
+      url: https://apt.releases.hashicorp.com/gpg
+      state: present
+
+  - name: TERRAFORM
+    apt_repository:
+      repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ubuntu_version }} main
+      filename: hashicorp
+      state: present
+
+  - name: POSTGRESQL KEY
+    apt_key:
+      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+      state: present
+
+  - name: POSTGESQL
+    apt_repository: deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt {{ ubuntu_version }}-pgdg main
+    filename: pgdg
+    state: present
+
+  - name: KUBECTL KEY
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      keyring: /usr/share/keyrings/kubernetes-archive-keyring.gpg
+      state: present  
+
+  - name: KUBECTL
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+      filename: kubectl
+      state: present
+
+  - name: UPDATE CACHE
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: UPGRADE ALL PACKAGES
+    apt:
+      name: "*"
+      state: latest
+
+  - name: INSTALL PACKAGES BASICS
+    apt:
+      name:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - gnupg-agent
+        - lsb-release
+        - vim
+        - build-essential
+        - checkinstall
+        - make
+        - automake
+        - cmake
+        - autoconf
+        - dkms
+        - git
+        - dirmngr
+        - software-properties-common
+        - gcc
+        - g++
+      state: latest
+
+  - name: UNINSTALL DEFAULT PACKAGES
+    apt:
+      name:
+        - vim-tiny
+        - xfburn
+        - gnome-mines
+        - gnome-sudoku
+        - sgt-puzzles
+        - simple-scan
+        - pidgin
+        - snapd
+      state: absent
+
+  - name: UNINSTALL UNNECESSARY PACKAGES
+    apt:
+      autoremove: yes

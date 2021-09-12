@@ -1,0 +1,88 @@
+- block:
+  - name: DNS TOOLS
+    apt:
+      name:
+        - whois
+        - bind9utils
+        - dnsutils
+        - testssl.sh        
+      state: latest
+
+  - name: SCANNERS
+    apt:
+      name: 
+        - traceroute
+        - nikto
+        - whatweb
+      state: latest
+
+  - name: NETWORKS TOOLS
+    apt:
+      name:
+        - telnet
+        - nmap
+        - etherape
+        - ettercap-text-only
+        - tcpdump
+        - wireshark
+        - aircrack-ng
+        - cowpatty
+      state: latest
+
+  - name: EXTRA TOOLS
+    apt:
+      name:
+        - htop
+        - mediainfo
+        - mediainfo-gui
+        - stegosuite
+        - crunch
+        - exiftool
+        - httrack
+        - fping
+        - masscan
+        - iftop
+        - hydra
+        - hydra-gtk
+        - chkrootkit
+        - hping3
+      state: latest
+
+  - name: ANDROID TOOLS
+    apt:
+      name:
+        - android-tools-adb
+        - apkinfo
+        - apktool
+      state: latest
+
+  - name: DEEP WEB TOOLS
+    apt:
+      name:
+        - torbrowser-launcher
+        - torsocks
+        - tor
+        - proxychains
+        - proxytunnel
+      state: latest
+  
+  - name: HARDENING TOOLS
+    apt:
+      name: 
+        - lynis
+        - dnsdiag
+      state: latest
+
+  - name: DATABASES TOOLS
+    apt:
+      name: 
+        - sqlmap
+        - sqlitebrowser
+        - sqlite3
+      state: latest
+
+#  - name: ADD USER ON GROUPS
+#    user:
+#      name: "{{ ubuntu_user }}"
+#      groups: tcpdump,wireshark
+#      append: yes

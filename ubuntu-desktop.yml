@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    become: True
+    roles: 
+      - ubuntu-desktop
+    vars:
+      ubuntu_user: user_name
+      ubuntu_version: focal
+      ubuntu_kernel_version: 5.4.0-77-generic   # $(uname -r)
+      ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
+      ubuntu_private_key_file: ~/.ssh/demo-ssh
+      ubuntu_port: 22
+      kernel_name: Linux          # $(uname -s)
+      hardware_machine: x86_64    # $(uname -m)

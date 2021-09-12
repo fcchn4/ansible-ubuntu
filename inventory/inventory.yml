@@ -1,0 +1,9 @@
+all:
+  children:
+    ubuntu:
+      hosts:
+        focal:
+          ansible_host: "{{ ubuntu_host }}"
+          ansible_user: "{{ ubuntu_user }}"
+          ansible_private_key_file: "{{ ubuntu_private_key_file }}"
+          ansible_port: "{{ ubuntu_port }}"
