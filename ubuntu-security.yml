@@ -10,3 +10,4 @@
       ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
       ubuntu_private_key_file: ~/.ssh/demo-ssh
       ubuntu_port: 22
+      ansible_python_interpreter: /usr/bin/python3
