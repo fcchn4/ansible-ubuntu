@@ -94,6 +94,7 @@
         - hunspell-es
         - pwgen
         - blackbird-gtk-theme
+        - fdupes
       state: latest
 
   - name: HDD TOOLS
