@@ -106,6 +106,7 @@
         - ntfs-3g
         - exfat-fuse
         - exfat-utils
+        - gnome-disk-utility
       state: latest
 
   - name: SSH SERVER
