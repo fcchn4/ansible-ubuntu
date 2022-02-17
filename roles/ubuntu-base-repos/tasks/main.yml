@@ -124,9 +124,10 @@
       state: present
 
   - name: POSTGESQL
-    apt_repository: deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt {{ ubuntu_version }}-pgdg main
-    filename: pgdg
-    state: present
+    apt_repository: 
+      repo: deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt {{ ubuntu_version }}-pgdg main
+      filename: pgdg
+      state: present
 
   - name: KUBECTL KEY
     apt_key:
