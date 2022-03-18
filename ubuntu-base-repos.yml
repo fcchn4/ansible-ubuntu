@@ -4,9 +4,11 @@
     roles: 
       - ubuntu-base-repos
     vars:
-      ubuntu_user: user_name
-      ubuntu_version: focal
-      ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
-      ubuntu_private_key_file: ~/.ssh/demo-ssh
+      ubuntu_user: NAME_USER
+      ubuntu_version: UBUNTU_NAME
+      ubuntu_host: XXX.YYY.ZZZ.VVV
+      ubuntu_private_key_file: ~/.ssh/SSH_PRI_KEY
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
+
+# Ubuntu Available Name: focal, jammy

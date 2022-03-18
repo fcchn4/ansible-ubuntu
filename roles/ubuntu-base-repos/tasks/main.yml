@@ -22,13 +22,13 @@
   
   - name: MARIADB
     apt_repository:
-      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
+      repo: deb [arch=amd64] https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 
   - name: MARIADB SRC
     apt_repository:
-      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
+      repo: deb-src https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 

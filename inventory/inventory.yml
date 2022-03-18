@@ -1,6 +1,6 @@
 all:
   hosts:
-    focal:
+    ubuntu:
       ansible_host: "{{ ubuntu_host }}"
   
   vars:
