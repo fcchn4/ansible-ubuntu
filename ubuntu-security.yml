@@ -4,10 +4,12 @@
     roles: 
       - ubuntu-security
     vars:
-      ubuntu_user: user_name
-      ubuntu_version: focal
-      ubuntu_kernel_version: 5.4.0-77-generic   # $(uname -r)
-      ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
+      ubuntu_user: USER_NAME
+      ubuntu_version: UBUNTU_NAME
+      ubuntu_kernel_version: 5.4.0-77-generic
+      ubuntu_host: IP_OR_DOMAIN
       ubuntu_private_key_file: ~/.ssh/demo-ssh
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
+
+# For Ubuntu Kernel Version: $(uname -r)

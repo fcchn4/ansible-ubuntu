@@ -4,10 +4,10 @@
     roles: 
       - ubuntu-base-repos
     vars:
-      ubuntu_user: freddy
-      ubuntu_version: focal
-      ubuntu_host: 10.172.1.35
-      ubuntu_private_key_file: ~/.ssh/fcch-ssh
+      ubuntu_user: USER_NAME
+      ubuntu_version: UBUNTU_NAME
+      ubuntu_host: IP_OR_DOMAIN
+      ubuntu_private_key_file: ~/.ssh/SSH_PRI_KEY
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
 

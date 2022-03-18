@@ -4,12 +4,16 @@
     roles: 
       - ubuntu-desktop
     vars:
-      ubuntu_user: user_name
-      ubuntu_version: focal
-      ubuntu_kernel_version: 5.4.0-77-generic   # $(uname -r)
-      ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
-      ubuntu_private_key_file: ~/.ssh/demo-ssh
+      ubuntu_user: USER_NAME
+      ubuntu_version: UBUNTU_NAME
+      ubuntu_host: IP_OR_DOMAIN
+      ubuntu_private_key_file: ~/.ssh/SSH_PRI_KEY
       ubuntu_port: 22
-      kernel_name: Linux          # $(uname -s)
-      hardware_machine: x86_64    # $(uname -m)
+      kernel_name: Linux
+      hardware_machine: x86_64
+      ubuntu_kernel_version: 5.4.0-77-generic
       ansible_python_interpreter: /usr/bin/python3
+
+# For Kernel Name: $(uname -s)
+# For Hardware Machine: $(uname -m)
+# For Ubuntu Kernel Version: $(uname -r)
