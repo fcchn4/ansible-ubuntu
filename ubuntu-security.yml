@@ -5,10 +5,10 @@
       - ubuntu-security
     vars:
       ubuntu_user: USER_NAME
-      ubuntu_version: UBUNTU_NAME
+      ubuntu_name: UBUNTU_NAME
       ubuntu_kernel_version: 5.4.0-77-generic
       ubuntu_host: IP_OR_DOMAIN
-      ubuntu_private_key_file: ~/.ssh/demo-ssh
+      ubuntu_private_key_file: ~/.ssh/SSH_PRI_KEY
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
 

@@ -95,6 +95,7 @@
         - pwgen
         - blackbird-gtk-theme
         - fdupes
+        - ranger
       state: latest
 
   - name: HDD TOOLS
@@ -217,7 +218,6 @@
   - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
     apt:
       name:
-        - hugo
         - nodejs
         - yarn
         - golang

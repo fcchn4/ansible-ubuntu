@@ -135,4 +135,13 @@ export PATH=/usr/local/bin:$PATH
 complete -C '/usr/local/bin/aws_completer' aws
 
 # npm prefix
-NPM_CONFIG_PREFIX=~/.npm-global
+export NPM_CONFIG_PREFIX=~/.npm-global
+
+# Default Ranger Editor
+export EDITOR=vim
+
+# Alias for scripts
+alias fcch-demo='/path/script.sh'
+
+# History Format
+export HISTTIMEFORMAT='%d-%m-%Y %T'

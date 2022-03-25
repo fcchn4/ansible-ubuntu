@@ -56,13 +56,13 @@
 
   - name: NODEJS
     apt_repository:
-      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x {{ ubuntu_version }} main
+      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x {{ ubuntu_name }} main
       filename: nodesource
       state: present
 
   - name: NODEJS SRC
     apt_repository:
-      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x {{ ubuntu_version }} main
+      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x {{ ubuntu_name }} main
       filename: nodesource
       state: present
 
@@ -85,13 +85,13 @@
   
   - name: MARIADB
     apt_repository:
-      repo: deb [arch=amd64] https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_version }} main
+      repo: deb [arch=amd64] https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
       filename: mariadb
       state: present
 
   - name: MARIADB SRC
     apt_repository:
-      repo: deb-src https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_version }} main
+      repo: deb-src https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
       filename: mariadb
       state: present
 
@@ -102,7 +102,7 @@
 
   - name: POSTGESQL
     apt_repository: 
-      repo: deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt {{ ubuntu_version }}-pgdg main
+      repo: deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt {{ ubuntu_name }}-pgdg main
       filename: pgdg
       state: present
 
@@ -114,7 +114,7 @@
 
   - name: DOCKER CE
     apt_repository:
-      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ubuntu_version }} stable
+      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ubuntu_name }} stable
       filename: docker-ce
       state: present
 
@@ -125,7 +125,7 @@
 
   - name: VIRTUALBOX
     apt_repository:
-      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ubuntu_version }} contrib
+      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ubuntu_name }} contrib
       filename: virtualbox
       state: present
 
@@ -148,7 +148,7 @@
 
   - name: TERRAFORM
     apt_repository:
-      repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ubuntu_version }} main
+      repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ubuntu_name }} main
       filename: hashicorp
       state: present
 
@@ -160,8 +160,25 @@
 
   - name: AZURE-CLI
     apt_repository:
-      repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ubuntu_version }} main
+      repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ubuntu_name }} main
       filename: azure-cli
+      state: present
+
+  - name: PPA ULAUNCHER
+    apt_repository:
+      repo: ppa:agornostal/ulauncher
+      codename: "{{ ubuntu_name }}"
+
+  - name: BRAVE BROWSER KEY
+    apt_key:
+      url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+      keyring: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+      state: present
+
+  - name: BRAVE BROWSER
+    apt_key:
+      url: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+      filename: brave-browser
       state: present
 
   - name: UPDATE CACHE
@@ -209,6 +226,8 @@
         - simple-scan
         - pidgin
         - snapd
+        - onboard
+        - parole
       state: absent
 
   - name: UNINSTALL UNNECESSARY PACKAGES
