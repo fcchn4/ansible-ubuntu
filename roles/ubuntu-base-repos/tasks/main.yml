@@ -78,22 +78,22 @@
       filename: yarn
       state: present
 
-  - name: MARIADB KEY
-    apt_key:
-      url: https://mariadb.org/mariadb_release_signing_key.asc
-      state: present
-  
-  - name: MARIADB
-    apt_repository:
-      repo: deb [arch=amd64] https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
-      filename: mariadb
-      state: present
-
-  - name: MARIADB SRC
-    apt_repository:
-      repo: deb-src https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
-      filename: mariadb
-      state: present
+#  - name: MARIADB KEY
+#    apt_key:
+#      url: https://mariadb.org/mariadb_release_signing_key.asc
+#      state: present
+#  
+#  - name: MARIADB
+#    apt_repository:
+#      repo: deb [arch=amd64] https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
+#      filename: mariadb
+#      state: present
+#
+#  - name: MARIADB SRC
+#    apt_repository:
+#      repo: deb-src https://mirror.docker.ru/mariadb/repo/10.6/ubuntu {{ ubuntu_name }} main
+#      filename: mariadb
+#      state: present
 
   - name: POSTGRESQL KEY
     apt_key:
@@ -176,7 +176,7 @@
       state: present
 
   - name: BRAVE BROWSER
-    apt_key:
+    apt_repository:
       url: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
       filename: brave-browser
       state: present
