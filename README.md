@@ -23,6 +23,7 @@ This repository contains a list of packages for Fedora, Debian, and Ubuntu distr
 - [doctl](https://github.com/digitalocean/doctl/releases)
 - [hugo](https://github.com/gohugoio/hugo/releases)
 - [ulauncher](https://ulauncher.io/#Download)
+- [brave-browser](https://brave.com/linux/#release-channel-installation)
 
 ## List of Repositories
 
