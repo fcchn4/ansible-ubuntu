@@ -96,9 +96,9 @@
         - blackbird-gtk-theme
         - fdupes
         - ranger
-        - openvpn
         - network-manager-openvpn
         - network-manager-openvpn-gnome
+        - software-properties-gtk
       state: latest
 
   - name: HDD TOOLS
