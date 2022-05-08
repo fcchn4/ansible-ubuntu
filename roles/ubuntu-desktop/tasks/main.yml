@@ -18,6 +18,8 @@
         - xubuntu-icon-theme
         - adwaita-icon-theme-full
         - obsidian-icon-theme
+        - oxygen-cursor-theme
+        - oxygen-cursor-theme-extra
       state: latest
 
   - name: INSTALL INTEL TOOLS AND SENSORS
@@ -57,9 +59,9 @@
   - name: TOOLS FOR BATERY AND OS
     apt:
       name:
-        - acpi
-        - acpid
-        - acpitool
+#        - acpi
+#        - acpid
+#        - acpitool
         - tuned
         - tuned-gtk
         - tuned-utils
@@ -109,7 +111,7 @@
         - parted
         - ntfs-3g
         - exfat-fuse
-        - exfat-utils
+        - exfatprogs
         - gnome-disk-utility
       state: latest
 
@@ -175,8 +177,8 @@
         - dia-shapes
         - dia-common
         - peek
-        - blender
-        - blender-ogrexml-1.9
+#        - blender
+#        - blender-ogrexml-1.9
         - optipng
         - imagemagick
       state: latest
@@ -244,10 +246,10 @@
         - virt-manager
       state: latest
   
-  - name: VIRTUALBOX
-    apt:
-      name: virtualbox-6.1
-      state: latest
+#  - name: VIRTUALBOX
+#    apt:
+#      name: virtualbox-6.1
+#      state: latest
 
   - name: DOCKER CE
     apt:
@@ -258,12 +260,14 @@
         - golang-docker-credential-helpers
       state: latest
 
-  - name: VAGRANT
+  - name: HASHICORP TOOLS
     apt:
       name:
+        - terraform
+        - packer
         - vagrant
-        - vagrant-digitalocean
-        - vagrant-libvirt
+#        - vagrant-digitalocean
+#        - vagrant-libvirt
       state: latest
 
   - name: ANSIBLE
@@ -285,7 +289,7 @@
 
   - name: INSTALL DOCKER COMPOSE
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
+      url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
       dest: /usr/local/bin/docker-compose 
       mode: "0755"
 
@@ -315,11 +319,11 @@
       state: started
       enabled: yes
 
-  - name: ENABLE DAEMON ACPI
-    systemd: 
-      name: acpid
-      state: started
-      enabled: yes
+#  - name: ENABLE DAEMON ACPI
+#    systemd: 
+#      name: acpid
+#      state: started
+#      enabled: yes
 
   - name: ENABLE DAEMON LIBVIRT
     systemd:
@@ -336,5 +340,5 @@
   - name: ADD USER ON GROUPS
     user:
       name: "{{ ubuntu_user }}"
-      groups: adm,docker,input,kvm,libvirt,libvirt-qemu,vboxusers
+      groups: adm,docker,input,kvm,libvirt,libvirt-qemu #vboxusers
       append: yes

@@ -4,12 +4,13 @@
     roles: 
       - ubuntu-desktop
     vars:
-      ubuntu_user: USER_NAME
+      ubuntu_user: UBUNTU_USER
       ubuntu_name: UBUNTU_NAME
       ubuntu_host: IP_OR_DOMAIN
-      ubuntu_private_key_file: ~/.ssh/SSH_PRI_KEY
+      ubuntu_private_key_file: ~/.ssh/SSH_PRIV_KEY
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
+      docker_compose_version: v2.5.0
 
 # For Kernel Name: $(uname -s)
 # For Hardware Machine: $(uname -m)
