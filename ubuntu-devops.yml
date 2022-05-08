@@ -2,7 +2,7 @@
   - hosts: all
     become: True
     roles: 
-      - ubuntu-security
+      - ubuntu-devops
     vars:
       ubuntu_user: USER_NAME
       ubuntu_name: UBUNTU_NAME
