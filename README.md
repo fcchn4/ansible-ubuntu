@@ -12,7 +12,6 @@ This repository contains a list of packages for Fedora, Debian, and Ubuntu distr
 
 - [zoom](https://zoom.us/download#client_4meeting)
 - [slack](https://slack.com/intl/en-bo/downloads/linux)
-- [brave](https://brave.com/download/)
 - [aws](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install)
 - [awless](https://github.com/wallix/awless/releases)
 - [helm](https://helm.sh/docs/intro/install/)
@@ -63,9 +62,9 @@ This ansible poroject is for automatic install on post-installation for Ubuntu O
 
 The project have three playbooks:
 
-- ubuntu-base-repos.yml
+- ubuntu-base.yml
 - ubuntu-desktop.yml
-- ubuntu-security.yml
+- ubuntu-devops.yml
 
 ## Versions
 
@@ -86,7 +85,7 @@ Execution order:
 1. **ubuntu-base.yml**:
 
 ```bash
-$ ansible-playbook ubuntu-base-repos.yml \
+$ ansible-playbook ubuntu-base.yml \
 --ask-become-pass \
 -i inventory/inventory.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
@@ -101,10 +100,10 @@ $ ansible-playbook ubuntu-desktop.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
 ```
 
-3. **ubuntu-security.yml**:
+3. **ubuntu-devops.yml**:
 
 ```bash
-$ ansible-playbook ubuntu-security.yml \
+$ ansible-playbook ubuntu-devops.yml \
 --ask-become-pass \
 -i inventory/inventory.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
