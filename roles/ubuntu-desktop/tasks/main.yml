@@ -59,12 +59,12 @@
   - name: TOOLS FOR BATERY AND OS
     apt:
       name:
-#        - acpi
-#        - acpid
-#        - acpitool
         - tuned
         - tuned-gtk
         - tuned-utils
+#        - acpi
+#        - acpid
+#        - acpitool        
       state: latest
 
   - name: EXTRA TOOLS
@@ -93,7 +93,6 @@
         - xscreensaver-gl-extra
         - keepassxc
         - gromit-mpx
-        - hunspell-es
         - pwgen
         - blackbird-gtk-theme
         - fdupes
@@ -101,6 +100,7 @@
         - network-manager-openvpn
         - network-manager-openvpn-gnome
         - software-properties-gtk
+#        - hunspell-es        
       state: latest
 
   - name: HDD TOOLS
@@ -177,10 +177,10 @@
         - dia-shapes
         - dia-common
         - peek
-#        - blender
-#        - blender-ogrexml-1.9
         - optipng
         - imagemagick
+#        - blender
+#        - blender-ogrexml-1.9
       state: latest
 
   - name: PRINTES TOOLS
@@ -233,24 +233,6 @@
         - python3-pip
       state: latest
 
-  - name: KVM VIRTUALIZATION
-    apt:
-      name:
-        - qemu-kvm
-        - qemu-utils
-        - libvirt-clients
-        - libvirt-daemon-system
-        - virt-viewer
-        - virt-what
-        - virtinst
-        - virt-manager
-      state: latest
-  
-#  - name: VIRTUALBOX
-#    apt:
-#      name: virtualbox-6.1
-#      state: latest
-
   - name: DOCKER CE
     apt:
       name:
@@ -293,6 +275,24 @@
       dest: /usr/local/bin/docker-compose 
       mode: "0755"
 
+#  - name: KVM VIRTUALIZATION
+#    apt:
+#      name:
+#        - qemu-kvm
+#        - qemu-utils
+#        - libvirt-clients
+#        - libvirt-daemon-system
+#        - virt-viewer
+#        - virt-what
+#        - virtinst
+#        - virt-manager
+#      state: latest
+  
+#  - name: VIRTUALBOX
+#    apt:
+#      name: virtualbox-6.1
+#      state: latest
+
   - name: DETECT AUTOMATIC SENSORS
     shell: sensors-detect --auto
 
@@ -319,26 +319,26 @@
       state: started
       enabled: yes
 
-#  - name: ENABLE DAEMON ACPI
-#    systemd: 
-#      name: acpid
-#      state: started
-#      enabled: yes
-
-  - name: ENABLE DAEMON LIBVIRT
-    systemd:
-      name: libvirtd
-      state: started
-      enabled: yes
-
   - name: ENABLE DAEMON DOCKER
     systemd:
       name: docker
       state: started
       enabled: yes
 
+#  - name: ENABLE DAEMON ACPI
+#    systemd: 
+#      name: acpid
+#      state: started
+#      enabled: yes
+
+#  - name: ENABLE DAEMON LIBVIRT
+#    systemd:
+#      name: libvirtd
+#      state: started
+#      enabled: yes
+
   - name: ADD USER ON GROUPS
     user:
       name: "{{ ubuntu_user }}"
-      groups: adm,docker,input,kvm,libvirt,libvirt-qemu #vboxusers
+      groups: adm,docker,input #libvirt,libvirt-qemu,vboxusers,kvm
       append: yes

@@ -11,4 +11,5 @@
       ubuntu_port: 22
       ansible_python_interpreter: /usr/bin/python3
 
+# Ubuntu Available Name: jammy
 # For Ubuntu Kernel Version: $(uname -r)
