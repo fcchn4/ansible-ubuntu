@@ -20,6 +20,7 @@
         - obsidian-icon-theme
         - oxygen-cursor-theme
         - oxygen-cursor-theme-extra
+        - xubuntu-restricted-addons
       state: latest
 
   - name: INSTALL INTEL TOOLS AND SENSORS
