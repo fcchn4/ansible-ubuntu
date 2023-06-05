@@ -101,7 +101,8 @@
         - network-manager-openvpn
         - network-manager-openvpn-gnome
         - software-properties-gtk
-#        - hunspell-es        
+        - v4l-utils
+        - v4l2loopback-utils     
       state: latest
 
   - name: HDD TOOLS
