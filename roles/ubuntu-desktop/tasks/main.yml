@@ -1,346 +1,347 @@
 - block:
-  - name: GET KERNEL VERSION
-    shell: uname -r
-    register: kernel_version_output
+    - name: GET KERNEL VERSION
+      shell: uname -r
+      register: kernel_version_output
 
-  - debug: msg="{{ kernel_version_output.stdout }}"
+    - debug: msg="{{ kernel_version_output.stdout }}"
 
-  - name: INSTALL PACKAGES AFTER UPDATES
-    apt:
-      name: 
-        - linux-headers-{{ kernel_version_output.stdout }}
-      state: latest
-  
-  - name: UBUNTU META PACKAGE
-    apt:
-      name:
-        - ubuntu-restricted-extras
-        - xubuntu-icon-theme
-        - adwaita-icon-theme-full
-        - obsidian-icon-theme
-        - oxygen-cursor-theme
-        - oxygen-cursor-theme-extra
-        - xubuntu-restricted-addons
-      state: latest
+    - name: INSTALL PACKAGES AFTER UPDATES
+      apt:
+        name:
+          - linux-headers-{{ kernel_version_output.stdout }}
+        state: latest
 
-  - name: INSTALL INTEL TOOLS AND SENSORS
-    apt:
-      name:
-        - intel-microcode
-        - intel-gpu-tools
-        - lm-sensors
-      state: latest
+    - name: UBUNTU META PACKAGE
+      apt:
+        name:
+          - ubuntu-restricted-extras
+          - xubuntu-icon-theme
+          - adwaita-icon-theme-full
+          - obsidian-icon-theme
+          - oxygen-cursor-theme
+          - oxygen-cursor-theme-extra
+          - xubuntu-restricted-addons
+        state: latest
 
-  - name: PACKAGES COMPRESS AND UNCOMPRESS
-    apt:
-      name:
-        - bzip2
-        - zip
-        - unzip
-        - unace
-        - rar
-        - unace-nonfree
-        - p7zip
-        - p7zip-full
-        - p7zip-rar
-        - unrar
-        - unrar-free
-        - lzip
-        - lhasa
-        - arj
-        - sharutils
-        - mpack
-        - lzma
-        - lzop
-        - cabextract
-        - xz-utils
-        - translate-shell
-      state: latest
+    - name: INSTALL INTEL TOOLS AND SENSORS
+      apt:
+        name:
+          - intel-microcode
+          - intel-gpu-tools
+          - lm-sensors
+        state: latest
 
-  - name: TOOLS FOR BATERY AND OS
-    apt:
-      name:
-        - tuned
-        - tuned-gtk
-        - tuned-utils
-#        - acpi
-#        - acpid
-#        - acpitool        
-      state: latest
+    - name: PACKAGES COMPRESS AND UNCOMPRESS
+      apt:
+        name:
+          - bzip2
+          - zip
+          - unzip
+          - unace
+          - rar
+          - unace-nonfree
+          - p7zip
+          - p7zip-full
+          - p7zip-rar
+          - unrar
+          - unrar-free
+          - lzip
+          - lhasa
+          - arj
+          - sharutils
+          - mpack
+          - lzma
+          - lzop
+          - cabextract
+          - xz-utils
+          - translate-shell
+        state: latest
 
-  - name: EXTRA TOOLS
-    apt:
-      name:
-        - wget
-        - pv
-        - net-tools
-        - speedtest-cli
-        - tree
-        - locales
-        - ethtool
-        - mlocate
-        - hardinfo
-        - tmux
-        - terminator
-        - vim-scripts
-        - vim-syntax-docker
-        - vim-syntax-gtk
-        - hwinfo
-        - telegram-desktop
-        - transmission
-        - cheese
-        - figlet
-        - xscreensaver-gl
-        - xscreensaver-gl-extra
-        - keepassxc
-        - gromit-mpx
-        - pwgen
-        - blackbird-gtk-theme
-        - fdupes
-        - ranger
-        - network-manager-openvpn
-        - network-manager-openvpn-gnome
-        - software-properties-gtk
-        - v4l-utils
-        - v4l2loopback-utils     
-      state: latest
+    - name: TOOLS FOR BATERY AND OS
+      apt:
+        name:
+          - tuned
+          - tuned-gtk
+          - tuned-utils
+        #        - acpi
+        #        - acpid
+        #        - acpitool
+        state: latest
 
-  - name: HDD TOOLS
-    apt:
-      name:
-        - gparted
-        - gpart
-        - parted
-        - ntfs-3g
-        - exfat-fuse
-        - exfatprogs
-        - gnome-disk-utility
-      state: latest
+    - name: EXTRA TOOLS
+      apt:
+        name:
+          - wget
+          - pv
+          - net-tools
+          - speedtest-cli
+          - tree
+          - locales
+          - ethtool
+          - mlocate
+          - hardinfo
+          - tmux
+          - terminator
+          - vim-scripts
+          - vim-syntax-docker
+          - vim-syntax-gtk
+          - hwinfo
+          - telegram-desktop
+          - transmission
+          - cheese
+          - figlet
+          - xscreensaver-gl
+          - xscreensaver-gl-extra
+          - keepassxc
+          - gromit-mpx
+          - pwgen
+          - blackbird-gtk-theme
+          - fdupes
+          - ranger
+          - network-manager-openvpn
+          - network-manager-openvpn-gnome
+          - software-properties-gtk
+          - v4l-utils
+          - v4l2loopback-utils
+          - flameshot
+        state: latest
 
-  - name: SSH SERVER
-    apt:
-      name:
-        - ssh
-        - rsync
-        - openssh-server
-        - openssh-client
-        - mosh
-        - putty
-        - putty-tools
-        - ssh-askpass
-        - ssh-askpass-gnome
-      state: latest
+    - name: HDD TOOLS
+      apt:
+        name:
+          - gparted
+          - gpart
+          - parted
+          - ntfs-3g
+          - exfat-fuse
+          - exfatprogs
+          - gnome-disk-utility
+        state: latest
 
-  - name: FIREWALL
-    apt:
-      name: ufw
-      state: latest
+    - name: SSH SERVER
+      apt:
+        name:
+          - ssh
+          - rsync
+          - openssh-server
+          - openssh-client
+          - mosh
+          - putty
+          - putty-tools
+          - ssh-askpass
+          - ssh-askpass-gnome
+        state: latest
 
-  - name: CODECS, SOUND AND VIDEO
-    apt:
-      name:
-        - vlc
-        - gstreamer1.0-libav
-        - gstreamer1.0-plugins-ugly
-        - gstreamer1.0-plugins-bad
-        - gstreamer1.0-pulseaudio
-        - vorbis-tools
-        - faac
-        - faad
-        - ffmpeg
-        - ffmpeg2theora
-        - alsa-base
-        - alsa-firmware-loaders
-        - alsa-oss
-        - alsa-tools
-        - alsa-utils
-        - mesa-utils
-        - obs-studio
-        - obs-plugins
-      state: latest
+    - name: FIREWALL
+      apt:
+        name: ufw
+        state: latest
 
-  - name: FONTS TYPOGRAPHICS
-    apt:
-      name:
-        - ttf-mscorefonts-installer
-        - fonts-freefont-ttf
-        - fonts-freefont-otf
-      state: latest
+    - name: CODECS, SOUND AND VIDEO
+      apt:
+        name:
+          - vlc
+          - gstreamer1.0-libav
+          - gstreamer1.0-plugins-ugly
+          - gstreamer1.0-plugins-bad
+          - gstreamer1.0-pulseaudio
+          - vorbis-tools
+          - faac
+          - faad
+          - ffmpeg
+          - ffmpeg2theora
+          - alsa-base
+          - alsa-firmware-loaders
+          - alsa-oss
+          - alsa-tools
+          - alsa-utils
+          - mesa-utils
+          - obs-studio
+          - obs-plugins
+        state: latest
 
-  - name: GRAPHICS DESIGN AND IMAGE EDIT
-    apt:
-      name:
-        - gimp
-        - gimp-data-extras
-        - inkscape
-        - inkscape-open-symbols
-        - dia
-        - dia-rib-network
-        - dia-shapes
-        - dia-common
-        - peek
-        - optipng
-        - imagemagick
-#        - blender
-#        - blender-ogrexml-1.9
-      state: latest
+    - name: FONTS TYPOGRAPHICS
+      apt:
+        name:
+          - ttf-mscorefonts-installer
+          - fonts-freefont-ttf
+          - fonts-freefont-otf
+        state: latest
 
-  - name: PRINTES TOOLS
-    apt:
-      name:
-        - cups
-        - cups-core-drivers
-        - cups-filters
-        - cups-filters-core-drivers
-        - cups-ipp-utils
-        - hplip
-        - hplip-data
-      state: latest
+    - name: GRAPHICS DESIGN AND IMAGE EDIT
+      apt:
+        name:
+          - gimp
+          - gimp-data-extras
+          - inkscape
+          - inkscape-open-symbols
+          - dia
+          - dia-rib-network
+          - dia-shapes
+          - dia-common
+          - peek
+          - optipng
+          - imagemagick
+        #        - blender
+        #        - blender-ogrexml-1.9
+        state: latest
 
-  - name: GOOGLE CHROME
-    apt:
-      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - name: PRINTES TOOLS
+      apt:
+        name:
+          - cups
+          - cups-core-drivers
+          - cups-filters
+          - cups-filters-core-drivers
+          - cups-ipp-utils
+          - hplip
+          - hplip-data
+        state: latest
 
-  - name: PACKAGES FOR HOBBIES
-    apt:
-      name:
-        - ghex
-        - gqrx-sdr
-        - fritzing
-        - fritzing-parts
-        - arduino
-        - arduino-core
-      state: latest
+    - name: GOOGLE CHROME
+      apt:
+        deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-  - name: INSTALL VSCODE
-    apt:
-      name: code
-      state: latest
+    - name: PACKAGES FOR HOBBIES
+      apt:
+        name:
+          - ghex
+          - gqrx-sdr
+          - fritzing
+          - fritzing-parts
+          - arduino
+          - arduino-core
+        state: latest
 
-  - name: TYPORA
-    apt:
-      name: typora
-      state: latest
-      
-  - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
-    apt:
-      name:
-        - nodejs
-        - yarn
-        - golang
-        - jq
-        - default-jdk
-        - default-jre
-        - python3-virtualenv
-        - python3-pip
-      state: latest
+    - name: INSTALL VSCODE
+      apt:
+        name: code
+        state: latest
 
-  - name: DOCKER CE
-    apt:
-      name:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-        - golang-docker-credential-helpers
-      state: latest
+    - name: TYPORA
+      apt:
+        name: typora
+        state: latest
 
-  - name: HASHICORP TOOLS
-    apt:
-      name:
-        - terraform
-        - packer
-        - vagrant
-#        - vagrant-digitalocean
-#        - vagrant-libvirt
-      state: latest
+    - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
+      apt:
+        name:
+          - nodejs
+          - yarn
+          - golang
+          - jq
+          - default-jdk
+          - default-jre
+          - python3-virtualenv
+          - python3-pip
+        state: latest
 
-  - name: ANSIBLE
-    apt:
-      name: ansible
-      state: latest
+    - name: DOCKER CE
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - golang-docker-credential-helpers
+        state: latest
 
-  - name: GET KERNEL NAME
-    shell: uname -s
-    register: kernel_name_output
+    - name: HASHICORP TOOLS
+      apt:
+        name:
+          - terraform
+          - packer
+          - vagrant
+        #        - vagrant-digitalocean
+        #        - vagrant-libvirt
+        state: latest
 
-  - debug: msg="{{ kernel_name_output.stdout }}"
+    - name: ANSIBLE
+      apt:
+        name: ansible
+        state: latest
 
-  - name: GET HARDWARE MACHINE
-    shell: uname -m
-    register: kernel_machine_output
+    - name: GET KERNEL NAME
+      shell: uname -s
+      register: kernel_name_output
 
-  - debug: msg="{{ kernel_machine_output.stdout }}"
+    - debug: msg="{{ kernel_name_output.stdout }}"
 
-  - name: INSTALL DOCKER COMPOSE
-    get_url:
-      url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
-      dest: /usr/local/bin/docker-compose 
-      mode: "0755"
+    - name: GET HARDWARE MACHINE
+      shell: uname -m
+      register: kernel_machine_output
 
-#  - name: KVM VIRTUALIZATION
-#    apt:
-#      name:
-#        - qemu-kvm
-#        - qemu-utils
-#        - libvirt-clients
-#        - libvirt-daemon-system
-#        - virt-viewer
-#        - virt-what
-#        - virtinst
-#        - virt-manager
-#      state: latest
-  
-#  - name: VIRTUALBOX
-#    apt:
-#      name: virtualbox-6.1
-#      state: latest
+    - debug: msg="{{ kernel_machine_output.stdout }}"
 
-  - name: DETECT AUTOMATIC SENSORS
-    shell: sensors-detect --auto
+    - name: INSTALL DOCKER COMPOSE
+      get_url:
+        url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
+        dest: /usr/local/bin/docker-compose
+        mode: "0755"
 
-  - name: CREATE FILE TERMINATOR
-    file:
-      path: /home/{{ ubuntu_user }}/.config/terminator
-      state: directory
-      mode: "0775"
-      owner: "{{ ubuntu_user }}"
-      group: "{{ ubuntu_user }}"
-      recurse: yes
+    #  - name: KVM VIRTUALIZATION
+    #    apt:
+    #      name:
+    #        - qemu-kvm
+    #        - qemu-utils
+    #        - libvirt-clients
+    #        - libvirt-daemon-system
+    #        - virt-viewer
+    #        - virt-what
+    #        - virtinst
+    #        - virt-manager
+    #      state: latest
 
-  - name: ADD CONFIG FILE FOR TERMINATOR
-    template:
-      src: terminator-config
-      dest: /home/{{ ubuntu_user }}/.config/terminator/config
-      owner: "{{ ubuntu_user }}"
-      group: "{{ ubuntu_user }}"
-      mode: "0664"
+    #  - name: VIRTUALBOX
+    #    apt:
+    #      name: virtualbox-6.1
+    #      state: latest
 
-  - name: ENABLE DAEMONS
-    systemd:
-      name: tuned
-      state: started
-      enabled: yes
+    - name: DETECT AUTOMATIC SENSORS
+      shell: sensors-detect --auto
 
-  - name: ENABLE DAEMON DOCKER
-    systemd:
-      name: docker
-      state: started
-      enabled: yes
+    - name: CREATE FILE TERMINATOR
+      file:
+        path: /home/{{ ubuntu_user }}/.config/terminator
+        state: directory
+        mode: "0775"
+        owner: "{{ ubuntu_user }}"
+        group: "{{ ubuntu_user }}"
+        recurse: yes
 
-#  - name: ENABLE DAEMON ACPI
-#    systemd: 
-#      name: acpid
-#      state: started
-#      enabled: yes
+    - name: ADD CONFIG FILE FOR TERMINATOR
+      template:
+        src: terminator-config
+        dest: /home/{{ ubuntu_user }}/.config/terminator/config
+        owner: "{{ ubuntu_user }}"
+        group: "{{ ubuntu_user }}"
+        mode: "0664"
 
-#  - name: ENABLE DAEMON LIBVIRT
-#    systemd:
-#      name: libvirtd
-#      state: started
-#      enabled: yes
+    - name: ENABLE DAEMONS
+      systemd:
+        name: tuned
+        state: started
+        enabled: yes
 
-  - name: ADD USER ON GROUPS
-    user:
-      name: "{{ ubuntu_user }}"
-      groups: adm,docker,input #libvirt,libvirt-qemu,vboxusers,kvm
-      append: yes
+    - name: ENABLE DAEMON DOCKER
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    #  - name: ENABLE DAEMON ACPI
+    #    systemd:
+    #      name: acpid
+    #      state: started
+    #      enabled: yes
+
+    #  - name: ENABLE DAEMON LIBVIRT
+    #    systemd:
+    #      name: libvirtd
+    #      state: started
+    #      enabled: yes
+
+    - name: ADD USER ON GROUPS
+      user:
+        name: "{{ ubuntu_user }}"
+        groups: adm,docker,input #libvirt,libvirt-qemu,vboxusers,kvm
+        append: yes
